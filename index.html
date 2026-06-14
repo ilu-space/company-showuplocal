@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShowUpLocal — Get Found. Get Chosen. Get Growing.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #0D47A1;
+    --blue-dark: #0a3580;
+    --blue-light: #1565C0;
+    --orange: #FF6F00;
+    --orange-light: #FF8F00;
+    --white: #ffffff;
+    --off-white: #F8FAFF;
+    --gray-50: #F1F5FB;
+    --gray-100: #E3EAF7;
+    --gray-200: #C9D6EE;
+    --gray-400: #7A90B8;
+    --gray-600: #3D5275;
+    --gray-800: #1A2740;
+    --text: #1A2740;
+    --text-muted: #4A6080;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  img { max-width: 100%; }
+
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 15px 32px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    text-align: center;
+  }
+
+  .btn:hover { transform: translateY(-2px); text-decoration: none; }
+
+  .btn-primary {
+    background: var(--orange);
+    color: var(--white);
+    box-shadow: 0 4px 18px rgba(255,111,0,0.35);
+  }
+
+  .btn-primary:hover {
+    background: var(--orange-light);
+    box-shadow: 0 6px 24px rgba(255,111,0,0.45);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.7);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 4px 18px rgba(13,71,161,0.3);
+  }
+
+  .btn-blue:hover {
+    background: var(--blue-light);
+    box-shadow: 0 6px 24px rgba(13,71,161,0.4);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    background: rgba(255,111,0,0.1);
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .section-label.blue {
+    color: var(--blue);
+    background: rgba(13,71,161,0.08);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-100);
+    box-shadow: 0 1px 8px rgba(13,71,161,0.06);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--orange); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--blue); }
+
+  .nav-cta { display: flex; align-items: center; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 55%, #1a63d4 100%);
+    color: var(--white);
+    padding: 88px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(255,111,0,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -60px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,111,0,0.2);
+    border: 1px solid rgba(255,111,0,0.4);
+    color: #FFB74D;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+
+  .hero h1 em {
+    color: #FFB74D;
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.82);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 1.65;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .hero-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 14px;
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .search-mockup {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+  }
+
+  .search-bar-icon { font-size: 16px; }
+
+  .search-bar-text {
+    font-size: 14px;
+    color: var(--gray-600);
+    font-style: italic;
+  }
+
+  .map-result {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .map-result.top {
+    background: rgba(13,71,161,0.06);
+    border-left-color: var(--blue);
+  }
+
+  .map-result-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .map-result.top .map-result-num { background: var(--orange); }
+
+  .map-result-info { flex: 1; }
+
+  .map-result-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.3;
+  }
+
+  .map-result-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .map-result-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--orange);
+    color: white;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+
+  .stat-card-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #FFB74D;
+    line-height: 1;
+  }
+
+  .stat-card-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 5px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .hero h1 { font-size: 36px; }
+  }
+
+  /* ─── PROBLEM BAND ─── */
+  .problem-band {
+    background: var(--gray-800);
+    color: var(--white);
+    padding: 52px 0;
+  }
+
+  .problem-band-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .problem-band h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    color: var(--white);
+    line-height: 1.25;
+  }
+
+  .problem-band h2 span { color: #FFB74D; }
+
+  .problem-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    list-style: none;
+  }
+
+  .problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  .problem-item-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  @media (max-width: 768px) {
+    .problem-band-inner { grid-template-columns: 1fr; gap: 28px; }
+    .problem-list { grid-template-columns: 1fr; }
+  }
+
+  /* ─── METHODOLOGY ─── */
+  .methodology {
+    padding: 96px 0;
+    background: var(--off-white);
+  }
+
+  .methodology-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 64px;
+  }
+
+  .methodology-header h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .methodology-header p {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .steps-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .steps-track::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--orange));
+    z-index: 0;
+  }
+
+  .step-item {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .step-num {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 4px solid var(--off-white);
+    box-shadow: 0 4px 16px rgba(13,71,161,0.25);
+    transition: transform 0.2s;
+  }
+
+  .step-item:nth-child(4) .step-num { background: var(--orange); }
+  .step-item:nth-child(3) .step-num { background: var(--blue-light); }
+
+  .step-item:hover .step-num { transform: scale(1.08); }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .steps-track { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .steps-track::before { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .steps-track { grid-template-columns: 1fr; }
+  }
+
+  /* ─── FEATURES ─── */
+  .features {
+    padding: 96px 0;
+    background: var(--white);
+  }
+
+  .features-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 56px;
+  }
+
+  .features-header h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .features-header p {
+    font-size: 17px;
+    color: var(--text-muted);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .feature-card {
+    background: var(--off-white);
+    border: 1px solid var(--gray-100);
+    border-radius: 14px;
+    padding: 32px 28px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--orange));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 8px 32px rgba(13,71,161,0.12);
+    transform: translateY(-4px);
+  }
+
+  .feature-card:hover::before { opacity: 1; }
+
+  .feature-icon {
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── WHY US ─── */
+  .why-us {
+    padding: 96px 0;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-us::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,111,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .why-us-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .why-us h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .why-us-lead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .differentiator-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .diff-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.55;
+  }
+
+  .diff-check {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  .comparison-table {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .comp-header-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 0;
+    background: rgba(255,255,255,0.1);
+    padding: 14px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .comp-header-row span:last-child { text-align: center; }
+  .comp-header-row span:nth-child(2) { text-align: center; }
+
+  .comp-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 0;
+    padding: 13px 20px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    align-items: center;
+  }
+
+  .comp-row-label { font-weight: 500; }
+
+  .comp-val {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .comp-val.yes { color: #69F0AE; }
+  .comp-val.no { color: rgba(255,255,255,0.28); }
+
+  @media (max-width: 900px) {
+    .why-us-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ─── FOUNDER ─── */
+  .founder {
+    padding: 96px 0;
+    background: var(--gray-50);
+  }
+
+  .founder-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .founder-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(13,71,161,0.1);
+    border-top: 4px solid var(--blue);
+  }
+
+  .founder-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--blue-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 40px;
+    color: white;
+  }
+
+  .founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .founder-role {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .founder-content h2 {
+    font-size: clamp(26px, 3.5vw, 36px);
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .founder-note {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+
+  .founder-note strong { color: var(--text); }
+
+  .founder-quote {
+    border-left: 4px solid var(--orange);
+    padding: 18px 24px;
+    background: rgba(255,111,0,0.06);
+    border-radius: 0 10px 10px 0;
+    font-size: 16px;
+    color: var(--text);
+    font-style: italic;
+    line-height: 1.7;
+    margin-top: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .founder-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ─── FAQ ─── */
+  .faq {
+    padding: 96px 0;
+    background: var(--white);
+  }
+
+  .faq-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 56px;
+  }
+
+  .faq-header h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .faq-header p {
+    font-size: 17px;
+    color: var(--text-muted);
+  }
+
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: var(--white);
+    border: none;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+
+  .faq-q:hover { background: var(--gray-50); }
+
+  .faq-q[aria-expanded="true"] {
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  .faq-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+    transition: transform 0.2s, background 0.15s;
+  }
+
+  .faq-q[aria-expanded="true"] .faq-icon {
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.25s;
+  }
+
+  .faq-a.open {
+    max-height: 400px;
+    padding: 18px 24px 22px;
+  }
+
+  /* ─── CTA SECTION ─── */
+  .cta-section {
+    padding: 96px 0;
+    background: var(--off-white);
+  }
+
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .cta-content h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--text);
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+
+  .cta-content h2 em {
+    color: var(--blue);
+    font-style: normal;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .trust-signals {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .trust-signal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .trust-signal-icon {
+    color: var(--blue);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .cta-form-wrap {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px 36px;
+    box-shadow: 0 8px 40px rgba(13,71,161,0.12);
+    border-top: 4px solid var(--orange);
+  }
+
+  .cta-form-wrap h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .cta-form-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    line-height: 1.55;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-600);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(13,71,161,0.1);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 8px;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(255,111,0,0.35);
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+
+  .form-submit:hover {
+    background: var(--orange-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(255,111,0,0.45);
+  }
+
+  .form-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .form-fine {
+    font-size: 12px;
+    color: var(--gray-400);
+    text-align: center;
+    margin-top: 14px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .cta-inner { grid-template-columns: 1fr; gap: 40px; }
+    .cta-form-wrap { padding: 30px 24px; }
+  }
+
+  /* ─── INDUSTRIES BAND ─── */
+  .industries {
+    padding: 56px 0;
+    background: var(--white);
+    border-top: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .industries-label {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gray-400);
+    margin-bottom: 28px;
+  }
+
+  .industries-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .industry-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    color: var(--gray-600);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 18px;
+    border-radius: 100px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .industry-pill:hover {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--gray-800);
+    color: rgba(255,255,255,0.65);
+    padding: 48px 0 32px;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .footer-brand-name span { color: var(--orange); }
+
+  .footer-tagline {
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .footer-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--white); text-decoration: none; }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .powered-by a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .powered-by a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  /* ─── REVEAL ANIMATIONS (progressive enhancement) ─── */
+  .reveal { opacity: 1; transform: none; transition: opacity 0.55s ease, transform 0.55s ease; }
+  .js .reveal { opacity: 0; transform: translateY(28px); }
+  .js .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">ShowUp<span>Local</span></a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#features">What We Do</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#book-call" class="btn btn-primary" style="padding:12px 24px;font-size:14px;">Book a Free Discovery Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span>🤖</span>
+          <span>AI-Powered Local SEO</span>
+        </div>
+        <h1>Your <em>customers</em> are searching. Are they finding you?</h1>
+        <p class="hero-sub">ShowUpLocal audits, fixes, and optimizes your entire digital presence — Google Business Profile, website, directories, and reviews — so local customers find <em>you</em> instead of your competitor.</p>
+        <div class="hero-cta-group">
+          <a href="#book-call" class="btn btn-primary">Book a Free Discovery Call</a>
+          <a href="#features" class="btn btn-outline">See What We Fix →</a>
+        </div>
+        <p class="hero-note">No long contracts. No confusing jargon. Just more customers finding you.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="search-mockup">
+          <div class="search-bar">
+            <span class="search-bar-icon">🔍</span>
+            <span class="search-bar-text">"best HVAC company near me"</span>
+          </div>
+          <div class="map-result top">
+            <div class="map-result-num">1</div>
+            <div class="map-result-info">
+              <div class="map-result-name">Your Business Name</div>
+              <div class="map-result-meta">HVAC · Open now · 0.8 mi</div>
+              <span class="map-result-tag">🏆 Optimized by ShowUpLocal</span>
+            </div>
+          </div>
+          <div class="map-result" style="opacity:0.55;">
+            <div class="map-result-num" style="background:#7A90B8;">2</div>
+            <div class="map-result-info">
+              <div class="map-result-name" style="color:#7A90B8;">Competitor A</div>
+              <div class="map-result-meta">HVAC · 1.2 mi</div>
+            </div>
+          </div>
+          <div class="map-result" style="opacity:0.4;">
+            <div class="map-result-num" style="background:#C9D6EE;color:#7A90B8;">3</div>
+            <div class="map-result-info">
+              <div class="map-result-name" style="color:#7A90B8;">Competitor B</div>
+              <div class="map-result-meta">HVAC · 2.1 mi</div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-card-val">50+</div>
+            <div class="stat-card-label">Platforms Audited</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-val">70+</div>
+            <div class="stat-card-label">Directories Synced</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-val">#1</div>
+            <div class="stat-card-label">Goal: Map Pack</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM BAND -->
+<section class="problem-band">
+  <div class="container">
+    <div class="problem-band-inner">
+      <div>
+        <h2>Sound <span>familiar?</span></h2>
+      </div>
+      <ul class="problem-list">
+        <li class="problem-item">
+          <span class="problem-item-icon">😤</span>
+          <span>Customers can't find your business in Google Maps, even though you've been open for years</span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-item-icon">📋</span>
+          <span>Your name, address, or phone number is wrong or inconsistent across directories</span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-item-icon">📉</span>
+          <span>Competitors with worse service rank above you and steal the call</span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-item-icon">💬</span>
+          <span>You have unanswered or unmanaged reviews slowly hurting your reputation</span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-item-icon">🌐</span>
+          <span>Your website looks outdated or doesn't work on mobile — and you know it</span>
+        </li>
+        <li class="problem-item">
+          <span class="problem-item-icon">🤷</span>
+          <span>You have no idea what's actually working — or what isn't — in your online presence</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="methodology" id="how-it-works">
+  <div class="container">
+    <div class="methodology-header reveal">
+      <span class="section-label">Our Approach</span>
+      <h2>Four steps from invisible to unmissable</h2>
+      <p>We've turned local digital visibility into a repeatable process. Here's exactly what happens when you work with us.</p>
+    </div>
+    <div class="steps-track">
+      <div class="step-item reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Full Presence Audit</div>
+        <p class="step-desc">Our AI scans 50+ platforms in minutes — Google, Yelp, directories, your website — and delivers a clear, plain-English report of everything broken, missing, or inconsistent.</p>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num">2</div>
+        <div class="step-title">Fix the Foundations</div>
+        <p class="step-desc">We claim, correct, and sync your business information across 70+ platforms, fully optimize your Google Business Profile, and repair or rebuild your website if needed.</p>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num">3</div>
+        <div class="step-title">Amplify & Grow</div>
+        <p class="step-desc">Ongoing review management, automated follow-up sequences to generate more 5-star reviews, and continuous optimization keep you climbing and converting.</p>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num">4</div>
+        <div class="step-title">Monthly Clarity</div>
+        <p class="step-desc">Plain-English monthly reports show exactly how many people found you, where they came from, and what they did — so you always know what your investment is doing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries">
+  <div class="container">
+    <p class="industries-label">Built for local service businesses like yours</p>
+    <div class="industries-row">
+      <span class="industry-pill">🍽️ Restaurants</span>
+      <span class="industry-pill">🦷 Dental Offices</span>
+      <span class="industry-pill">⚖️ Law Firms</span>
+      <span class="industry-pill">🔧 HVAC Companies</span>
+      <span class="industry-pill">💇 Salons & Spas</span>
+      <span class="industry-pill">🚗 Auto Shops</span>
+      <span class="industry-pill">🌿 Landscapers</span>
+      <span class="industry-pill">🏥 Medical Practices</span>
+      <span class="industry-pill">🐾 Pet Services</span>
+      <span class="industry-pill">🏠 Home Services</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header reveal">
+      <span class="section-label">What We Do</span>
+      <h2>Everything your online presence needs — done for you</h2>
+      <p>No piecemeal software subscriptions. No figuring it out yourself. We handle it all.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔍</span>
+        <div class="feature-title">Instant Presence Audit</div>
+        <p class="feature-desc">AI scans 50+ platforms in minutes to find every inconsistency, missing listing, broken link, and missed opportunity in your online presence — delivered as a clear, jargon-free report.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">📍</span>
+        <div class="feature-title">Google Business Optimization</div>
+        <p class="feature-desc">We fully optimize your Google Business Profile with the right categories, photos, keywords, posts, and Q&A so you rank higher in local map results where it matters most.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🌐</span>
+        <div class="feature-title">Website Build & Fix</div>
+        <p class="feature-desc">Whether you need a brand-new mobile-friendly website or your existing one needs a serious overhaul, we build fast, clean sites designed to convert visitors into customers.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔗</span>
+        <div class="feature-title">Directory & Listings Sync</div>
+        <p class="feature-desc">We claim, correct, and sync your business info across 70+ directories — Yelp, Bing, Apple Maps, Facebook, and more — so customers always find the right name, address, and phone number.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">⭐</span>
+        <div class="feature-title">Reputation Monitor</div>
+        <p class="feature-desc">Get alerted to new reviews across all platforms instantly. We help you respond professionally and generate more positive reviews with automated follow-up sequences.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">📊</span>
+        <div class="feature-title">Monthly Growth Reports</div>
+        <p class="feature-desc">Plain-English monthly reports showing how many people found you, where they came from, and what actions they took — so you always know your investment is working.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="container">
+    <div class="why-us-inner">
+      <div>
+        <span class="section-label" style="background:rgba(255,111,0,0.25);color:#FFB74D;">Why ShowUpLocal</span>
+        <h2>Not another DIY tool. Actual hands-on experts.</h2>
+        <p class="why-us-lead">There are plenty of platforms that'll show you what's wrong with your online presence. We're different — we actually fix it, maintain it, and make sure it keeps working for you month after month.</p>
+        <ul class="differentiator-list">
+          <li class="diff-item">
+            <span class="diff-check">✓</span>
+            <span><strong style="color:white;">AI speed + human strategy.</strong> Our tools scan fast so our experts can focus on the work that moves the needle — not administrative busywork.</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-check">✓</span>
+            <span><strong style="color:white;">No confusing jargon, ever.</strong> Everything we deliver — reports, recommendations, updates — is written in plain English your whole team can understand.</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-check">✓</span>
+            <span><strong style="color:white;">No long-term lock-in.</strong> We earn your business every month. Month-to-month arrangements mean you stay because it's working, not because you're trapped.</span>
+          </li>
+          <li class="diff-item">
+            <span class="diff-check">✓</span>
+            <span><strong style="color:white;">Built for businesses without a marketing team.</strong> We become your outsourced local marketing department — without the overhead of a full-time hire.</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="comparison-table">
+          <div class="comp-header-row">
+            <span>What you get</span>
+            <span>DIY Tools</span>
+            <span>ShowUpLocal</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Full presence audit</span>
+            <span class="comp-val yes">✓</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Done-for-you fixing</span>
+            <span class="comp-val no">✗</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Google Business management</span>
+            <span class="comp-val no">✗</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">70+ directories synced</span>
+            <span class="comp-val no">✗</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Reputation management</span>
+            <span class="comp-val no">✗</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Website build / fix</span>
+            <span class="comp-val no">✗</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">Plain-English reporting</span>
+            <span class="comp-val no">✗</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-row-label">No long-term contracts</span>
+            <span class="comp-val no">✗</span>
+            <span class="comp-val yes">✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER NOTE -->
+<section class="founder">
+  <div class="container">
+    <div class="founder-inner">
+      <div>
+        <div class="founder-card reveal">
+          <div class="founder-avatar">👋</div>
+          <div class="founder-name">The ShowUpLocal Team</div>
+          <div class="founder-role">Your Local Presence Partners</div>
+        </div>
+      </div>
+      <div class="founder-content reveal">
+        <span class="section-label blue">A Note From Us</span>
+        <h2>Why we built this</h2>
+        <p class="founder-note">
+          We've spent years working with local business owners — restaurateurs, dentists, plumbers, salon owners — who were pouring their heart into their craft while losing customers to less-qualified competitors who simply showed up better online.
+        </p>
+        <p class="founder-note">
+          <strong>The problem wasn't their business. It was their visibility.</strong> Wrong addresses on Google. No photos. Old websites that broke on phones. Reviews going unread and unanswered. The tools to fix this existed, but they required either deep technical knowledge or a dedicated marketing hire — neither of which most local business owners have.
+        </p>
+        <p class="founder-note">
+          ShowUpLocal exists to close that gap. We combine smart AI tools with real human expertise to make sure your business shows up first when the customers you're meant to serve go looking for you.
+        </p>
+        <div class="founder-quote">
+          "We're small enough that when you work with us in the early days, you work directly with the people who built this. We'd rather earn your trust with results than lock you into a contract."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <span class="section-label">Common Questions</span>
+      <h2>The things you're probably wondering</h2>
+      <p>Straight answers to the questions every skeptical business owner asks us first.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          How is this different from just doing it myself or using a tool like BrightLocal?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Most tools show you the problems. ShowUpLocal fixes them. We do the actual hands-on work — claiming listings, writing optimized content, building or overhauling your website, responding to reviews, and syncing your information across dozens of platforms. You don't need to learn anything or carve out hours every week. That's the whole point.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          How long before I see results?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          It depends on your starting point, but many clients see meaningful movement in Google Maps rankings within 30–60 days of their Google Business Profile and listings being fully optimized. Bigger jumps in organic search typically take 3–6 months. We'll be honest with you from the start about what's realistic for your specific situation — no inflated promises.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          Do I have to sign a long-term contract?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          No. We work on a month-to-month basis. There's typically a short onboarding period to get everything set up properly, but after that, you stay because you're seeing results — not because you're locked in. We think that's the only honest way to do business.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          What do I actually need to do? How much of my time does this take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Very little. We'll need about 30–60 minutes of your time upfront to gather information about your business — your story, services, photos, and access credentials. After that, we handle everything. You'll get a monthly report and can always reach us with questions, but day-to-day management is entirely on us.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          My website is old. Do I need to rebuild it, or can you work with what I have?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Both are options. We'll audit your current site and tell you honestly whether it needs a full rebuild or targeted fixes. Many clients just need speed improvements, mobile optimization, and better calls-to-action. Others need a fresh start. We'll give you a clear recommendation and scope — no upselling you on things you don't need.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          How much does it cost?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          We customize scope and pricing based on what your business actually needs — not a one-size-fits-all package. The best way to get accurate numbers is to book a free discovery call. We'll do a quick audit, talk through your goals, and give you a clear proposal. No pressure, no obligation.
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          Will I own everything — my listings, my website, my content?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Absolutely. Everything we build belongs to you. Your Google Business Profile, your website, your directory listings, your content — all of it is yours from day one. If you ever leave, you take it all with you. We build things properly, so your business isn't dependent on us to keep existing online.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA / BOOK A CALL -->
+<section class="cta-section" id="book-call">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-content reveal">
+        <span class="section-label">Get Started</span>
+        <h2>Let's find out exactly what's holding your <em>online presence</em> back</h2>
+        <p>Book a free, no-pressure discovery call. We'll run a quick audit of your current digital presence and show you the specific gaps that are costing you customers — whether you work with us or not.</p>
+        <ul class="trust-signals">
+          <li class="trust-signal">
+            <span class="trust-signal-icon">✅</span>
+            <span>Free 30-minute discovery call — no pitch, just honest findings</span>
+          </li>
+          <li class="trust-signal">
+            <span class="trust-signal-icon">✅</span>
+            <span>We'll audit your presence before the call so the conversation is specific to your business</span>
+          </li>
+          <li class="trust-signal">
+            <span class="trust-signal-icon">✅</span>
+            <span>No obligation, no long contracts, no confusing jargon</span>
+          </li>
+          <li class="trust-signal">
+            <span class="trust-signal-icon">✅</span>
+            <span>You're talking directly to the people who'll do the work — not a salesperson</span>
+          </li>
+          <li class="trust-signal">
+            <span class="trust-signal-icon">✅</span>
+            <span>We only take on clients we're genuinely confident we can help</span>
+          </li>
+        </ul>
+      </div>
+      <div class="cta-form-wrap reveal">
+        <h3>Book Your Free Discovery Call</h3>
+        <p class="cta-form-sub">Tell us a little about your business and we'll follow up to schedule your free audit and call — usually within one business day.</p>
+        <form action="/signup" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Business Name</label>
+            <input type="text" id="company" name="company" placeholder="Smith's Auto Shop">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="jane@smithsautoshop.com" required>
+          </div>
+          <div class="form-group">
+            <label for="interest">Type of Business</label>
+            <select id="interest" name="interest">
+              <option value="">— Select your industry —</option>
+              <option>Restaurant / Food Service</option>
+              <option>Dental / Medical Office</option>
+              <option>Law Firm</option>
+              <option>HVAC / Plumbing / Electrical</option>
+              <option>Salon / Spa / Beauty</option>
+              <option>Auto Shop</option>
+              <option>Landscaping / Lawn Care</option>
+              <option>Home Services</option>
+              <option>Other Local Service Business</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">What's your biggest challenge right now?</label>
+            <textarea id="description" name="description" placeholder="e.g. We're not showing up in Google Maps, our website is outdated, we're losing customers to competitors..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Request My Free Discovery Call →</button>
+          <p class="form-fine">We respond within one business day. Your information is never shared or sold.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">ShowUp<span>Local</span></div>
+        <p class="footer-tagline">Get found. Get chosen. Get growing.<br>AI-powered digital presence for local service businesses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#features">Presence Audit</a></li>
+          <li><a href="#features">Google Business</a></li>
+          <li><a href="#features">Website Build & Fix</a></li>
+          <li><a href="#features">Directory Sync</a></li>
+          <li><a href="#features">Reputation Management</a></li>
+          <li><a href="#features">Growth Reports</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#why-us">Why ShowUpLocal</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#book-call">Book a Discovery Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="year"></span> ShowUpLocal. All rights reserved.</span>
+      <span class="powered-by">Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>document.documentElement.classList.add('js');</script>
+
+<script>
+// Scroll reveal
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    // close all
+    document.querySelectorAll('.faq-q').forEach(function(b) {
+      b.setAttribute('aria-expanded', 'false');
+      var a = b.nextElementSibling;
+      if (a) a.classList.remove('open');
+    });
+    if (!expanded) {
+      this.setAttribute('aria-expanded', 'true');
+      var answer = this.nextElementSibling;
+      if (answer) answer.classList.add('open');
+    }
+  });
+});
+</script>
+
+<script>
+document.querySelectorAll('form').forEach(function(form) {
+  var action = form.getAttribute('action') || '';
+  if (action.indexOf('/signup') === -1) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var data = {};
+    ['email','name','company','interest','description'].forEach(function(k){
+      var el = form.querySelector('[name="' + k + '"]');
+      if (el && el.value) data[k] = el.value;
+    });
+    var btn = form.querySelector('button, input[type=submit]');
+    if (btn) btn.disabled = true;
+    fetch('https://api.madmantra.app/api/landing/showuplocal/signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(function(r) {
+      if (!r.ok) throw new Error('signup failed');
+      form.innerHTML = '<div role="status" style="text-align:center;padding:24px 8px"><div style="font-size:40px;line-height:1">&#9989;</div><h3 style="margin:12px 0 6px">Message received!</h3><p style="margin:0;opacity:.8">Thanks for reaching out. We will be in touch shortly.</p></div>';
+      form.scrollIntoView({behavior:'smooth', block:'center'});
+    }).catch(function(){
+      if (btn) btn.disabled = false;
+      alert('Something went wrong — please try again.');
+    });
+  });
+});
+</script>
+
+<script>document.querySelectorAll('.year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+
+</body>
+</html>
