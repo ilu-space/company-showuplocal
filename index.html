@@ -38,13 +38,23 @@
       "@id": "https://showuplocal.madmantra.app/#organization",
       "name": "ShowUpLocal",
       "url": "https://showuplocal.madmantra.app/",
-      "logo": "https://showuplocal.madmantra.app/og-image.png",
-      "description": "ShowUpLocal is an AI-powered digital presence service that helps local businesses get found online. We audit, fix, and optimize Google Business Profiles, websites, and directory listings so local businesses show up first when customers search.",
-      "sameAs": [],
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://showuplocal.madmantra.app/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "description": "ShowUpLocal is an AI-powered digital presence service that helps local businesses get found online. We audit, fix, and optimize Google Business Profiles, websites, and directory listings — combining smart AI tools with hands-on strategy so local businesses show up first when customers search. No long contracts, no confusing jargon. Just more customers finding you.",
+      "sameAs": [
+        "https://www.facebook.com/showuplocal",
+        "https://www.linkedin.com/company/showuplocal",
+        "https://twitter.com/showuplocal"
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
-        "url": "https://showuplocal.madmantra.app/#book-call"
+        "url": "https://showuplocal.madmantra.app/#book-call",
+        "availableLanguage": "English"
       }
     },
     {
@@ -57,23 +67,70 @@
       }
     },
     {
-      "@type": "Service",
-      "name": "Local SEO &amp; Google Business Profile Optimization",
+      "@type": "ProfessionalService",
+      "@id": "https://showuplocal.madmantra.app/#service",
+      "name": "ShowUpLocal — Local SEO & Google Business Profile Optimization",
+      "url": "https://showuplocal.madmantra.app/",
+      "description": "Done-for-you local SEO and digital presence management for local service businesses. We optimize Google Business Profiles, sync 70+ directory listings, manage online reviews, and build or fix websites — all month-to-month with no long-term contracts.",
       "provider": {
         "@id": "https://showuplocal.madmantra.app/#organization"
       },
-      "description": "Done-for-you local SEO service including Google Business Profile optimization, 70+ directory sync, reputation management, and monthly reporting. Month-to-month, no contracts.",
-      "serviceType": "Local SEO",
+      "serviceType": [
+        "Local SEO",
+        "Google Business Profile Optimization",
+        "Digital Presence Management",
+        "Directory Listings Sync",
+        "Online Reputation Management",
+        "Local Business Website Design"
+      ],
       "areaServed": {
         "@type": "Country",
         "name": "United States"
       },
-      "offers": {
-        "@type": "Offer",
-        "description": "Free Digital Presence Audit — no obligation, no contracts",
-        "price": "0",
-        "priceCurrency": "USD",
-        "url": "https://showuplocal.madmantra.app/#book-call"
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Local service businesses including restaurants, dental offices, HVAC companies, law firms, salons, auto shops, and home service providers"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "ShowUpLocal Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Free Digital Presence Audit"
+            },
+            "description": "AI-powered audit of 50+ platforms revealing every gap, inconsistency, and missed opportunity in your local online presence — delivered free, no obligation.",
+            "price": "0",
+            "priceCurrency": "USD",
+            "url": "https://showuplocal.madmantra.app/#book-call"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Google Business Profile Optimization"
+            },
+            "description": "Full optimization of your Google Business Profile — categories, photos, posts, Q&A, and keyword strategy — to rank higher in local map pack results."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Directory & Listings Sync"
+            },
+            "description": "Claim, correct, and sync your business name, address, and phone number across 70+ directories including Yelp, Bing, Apple Maps, and Facebook."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Online Reputation Management"
+            },
+            "description": "Monitor reviews across all platforms, respond professionally, and generate more 5-star reviews with automated follow-up sequences."
+          }
+        ]
       }
     },
     {
@@ -81,10 +138,42 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Are there long-term contracts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ShowUpLocal works on a month-to-month basis. There is a short onboarding period to get everything set up properly, but after that you stay because you're seeing results — not because you're locked in. We think that's the only honest way to do business."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What exactly do you fix? What's included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We fix your entire digital presence: (1) Google Business Profile — fully optimized with the right categories, photos, keywords, posts, and Q&A. (2) Directory listings — your name, address, and phone number claimed and synced accurately across 70+ platforms including Yelp, Bing, Apple Maps, and Facebook. (3) Online reputation — review monitoring, professional responses, and automated follow-up sequences to generate more 5-star reviews. (4) Website — we audit your site and repair or rebuild it so it's fast, mobile-friendly, and converts visitors into customers. (5) Monthly reporting — plain-English reports showing how many people found you and what they did."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast will I see more calls and customers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many clients see meaningful movement in Google Maps rankings within 30–60 days of their Google Business Profile and directory listings being fully optimized. Bigger jumps in organic search typically take 3–6 months. The timeline depends on how competitive your market is and where you're starting from. We'll be honest with you about what's realistic for your specific situation — no inflated promises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is ShowUpLocal different from Hibu, Thryv, or other local marketing companies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three key differences: (1) No long contracts — Hibu and Thryv typically require 12-month commitments. ShowUpLocal is month-to-month, so we earn your business every single month. (2) Plain English, not a black box — we show you exactly what we're doing and why in plain language, not vague dashboards full of vanity metrics. (3) AI speed + human strategy — we use AI to scan and identify issues fast, then real experts do the hands-on work. You're not paying for a platform that tells you what's wrong and then leaves you to fix it yourself."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How is ShowUpLocal different from DIY tools like BrightLocal?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most tools show you the problems. ShowUpLocal fixes them. We do the actual hands-on work — claiming listings, writing optimized content, building or overhauling your website, responding to reviews, and syncing your information across dozens of platforms."
+            "text": "Most tools show you the problems. ShowUpLocal fixes them. We do the actual hands-on work — claiming listings, writing optimized content, building or overhauling your website, responding to reviews, and syncing your information across dozens of platforms. You don't need to learn anything or carve out hours every week. That's the whole point."
           }
         },
         {
@@ -97,26 +186,18 @@
         },
         {
           "@type": "Question",
-          "name": "Do I have to sign a long-term contract?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. We work on a month-to-month basis. You stay because you're seeing results — not because you're locked in."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "How much of my time does working with ShowUpLocal take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Very little. We'll need about 30–60 minutes of your time upfront to gather information about your business. After that, we handle everything."
+            "text": "Very little. We'll need about 30–60 minutes of your time upfront to gather information about your business. After that, we handle everything. You'll get a monthly report and can always reach us with questions, but day-to-day management is entirely on us."
           }
         },
         {
           "@type": "Question",
-          "name": "Will I own my listings, website, and content?",
+          "name": "Will I own my listings, website, and content if I leave?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolutely. Everything we build belongs to you. Your Google Business Profile, your website, your directory listings, your content — all of it is yours from day one."
+            "text": "Absolutely. Everything we build belongs to you from day one. Your Google Business Profile, your website, your directory listings, your content — if you ever leave, you take it all with you. We build things properly, so your business isn't dependent on us to keep existing online."
           }
         }
       ]
@@ -1032,7 +1113,7 @@
   }
 
   .faq-a.open {
-    max-height: 400px;
+    max-height: 600px;
     padding: 18px 24px 22px;
   }
 
@@ -1668,51 +1749,51 @@
 
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
-          How is this different from just doing it myself or using a tool like BrightLocal?
+          Are there long-term contracts?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" id="faq-a-1" role="region">
-          Most tools show you the problems. ShowUpLocal fixes them. We do the actual hands-on work — claiming listings, writing optimized content, building or overhauling your website, responding to reviews, and syncing your information across dozens of platforms. You don't need to learn anything or carve out hours every week. That's the whole point.
+          No. ShowUpLocal works month-to-month — full stop. There's a short onboarding period to set everything up properly, but after that you stay because you're seeing results, not because you're locked in. We think that's the only honest way to do business. No annual commitments, no cancellation fees, no fine print.
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a-2">
-          How long before I see results?
+          What exactly do you fix? What's included?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" id="faq-a-2" role="region">
-          It depends on your starting point, but many clients see meaningful movement in Google Maps rankings within 30–60 days of their Google Business Profile and listings being fully optimized. Bigger jumps in organic search typically take 3–6 months. We'll be honest with you from the start about what's realistic for your specific situation — no inflated promises.
+          We fix your entire digital presence: (1) <strong>Google Business Profile</strong> — fully optimized with the right categories, photos, keywords, posts, and Q&amp;A. (2) <strong>Directory listings</strong> — your name, address, and phone number claimed and synced accurately across 70+ platforms including Yelp, Bing, Apple Maps, and Facebook. (3) <strong>Online reputation</strong> — review monitoring across all platforms, professional responses, and automated follow-up sequences to generate more 5-star reviews. (4) <strong>Website</strong> — we audit and repair or rebuild your site so it's fast, mobile-friendly, and converts visitors into customers. (5) <strong>Monthly reporting</strong> — plain-English reports showing exactly how many people found you and what they did. Everything is done for you.
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a-3">
-          Do I have to sign a long-term contract?
+          How fast will I see more calls and customers?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" id="faq-a-3" role="region">
-          No. We work on a month-to-month basis. There's typically a short onboarding period to get everything set up properly, but after that, you stay because you're seeing results — not because you're locked in. We think that's the only honest way to do business.
+          Many clients see meaningful movement in Google Maps rankings within 30–60 days of their Google Business Profile and directory listings being fully optimized. Bigger jumps in organic search typically take 3–6 months. The timeline depends on how competitive your market is and where you're starting from. We'll be honest with you from day one about what's realistic for your specific situation — no inflated promises.
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a-4">
-          What do I actually need to do? How much of my time does this take?
+          How is this different from Hibu, Thryv, or other local marketing companies?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" id="faq-a-4" role="region">
-          Very little. We'll need about 30–60 minutes of your time upfront to gather information about your business — your story, services, photos, and access credentials. After that, we handle everything. You'll get a monthly report and can always reach us with questions, but day-to-day management is entirely on us.
+          Three key differences: (1) <strong>No long contracts.</strong> Hibu and Thryv typically require 12-month commitments. We're month-to-month — we earn your business every single month. (2) <strong>Plain English, not a black box.</strong> We show you exactly what we're doing and why in language you can understand, not vague dashboards full of vanity metrics. (3) <strong>AI speed + human expertise.</strong> We use AI to scan and identify issues fast, then real people do the hands-on work. You're not paying for a platform that tells you what's wrong and then leaves you to fix it yourself.
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-q" aria-expanded="false" aria-controls="faq-a-5">
-          My website is old. Do I need to rebuild it, or can you work with what I have?
+          How is this different from just doing it myself or using a tool like BrightLocal?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-a" id="faq-a-5" role="region">
-          Both are options. We'll audit your current site and tell you honestly whether it needs a full rebuild or targeted fixes. Many clients just need speed improvements, mobile optimization, and better calls-to-action. Others need a fresh start. We'll give you a clear recommendation and scope — no upselling you on things you don't need.
+          Most tools show you the problems. ShowUpLocal fixes them. We do the actual hands-on work — claiming listings, writing optimized content, building or overhauling your website, responding to reviews, and syncing your information across dozens of platforms. You don't need to learn anything or carve out hours every week. That's the whole point.
         </div>
       </div>
 
