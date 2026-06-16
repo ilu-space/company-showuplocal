@@ -1117,6 +1117,261 @@
     padding: 18px 24px 22px;
   }
 
+  /* ─── PRESENCE HEALTH SCORE WIDGET ─── */
+  .phs-section {
+    padding: 80px 0;
+    background: linear-gradient(160deg, #0a3580 0%, #0D47A1 60%, #1a63d4 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phs-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -80px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,111,0,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .phs-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .phs-inner .section-label {
+    background: rgba(255,111,0,0.25);
+    color: #FFB74D;
+  }
+
+  .phs-inner h2 {
+    font-size: clamp(26px, 4vw, 40px);
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .phs-intro {
+    font-size: 16px;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 36px;
+    line-height: 1.65;
+  }
+
+  .phs-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+    padding: 36px 40px 40px;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    .phs-card { padding: 24px 20px 28px; }
+  }
+
+  .phs-progress-bar-wrap {
+    height: 8px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 100px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .phs-progress-bar {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--orange), #FFB74D);
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .phs-question {
+    display: none;
+    animation: phsFade 0.3s ease;
+  }
+
+  .phs-question.active { display: block; }
+
+  @keyframes phsFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .phs-q-num {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+  }
+
+  .phs-q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 22px);
+    color: var(--white);
+    line-height: 1.35;
+    margin-bottom: 24px;
+  }
+
+  .phs-btn-row {
+    display: flex;
+    gap: 14px;
+  }
+
+  .phs-btn {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.22);
+    background: transparent;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.12s;
+    text-align: center;
+  }
+
+  .phs-btn:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+
+  .phs-btn.yes {
+    border-color: #69F0AE;
+    color: #69F0AE;
+  }
+
+  .phs-btn.yes:hover { background: rgba(105,240,174,0.1); }
+
+  .phs-btn.no {
+    border-color: rgba(255,111,0,0.7);
+    color: #FFB74D;
+  }
+
+  .phs-btn.no:hover { background: rgba(255,111,0,0.1); }
+
+  /* Results panel */
+  .phs-result {
+    display: none;
+    animation: phsFade 0.4s ease;
+  }
+
+  .phs-result.active { display: block; }
+
+  .phs-score-ring {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  .phs-score-ring svg {
+    transform: rotate(-90deg);
+  }
+
+  .phs-score-ring circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+  }
+
+  .phs-score-ring .ring-bg {
+    stroke: rgba(255,255,255,0.12);
+  }
+
+  .phs-score-ring .ring-fill {
+    stroke: var(--orange);
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 0.9s ease, stroke 0.4s ease;
+  }
+
+  .phs-score-num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .phs-result-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .phs-result-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 24px;
+    line-height: 1.65;
+    text-align: center;
+  }
+
+  .phs-gaps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .phs-gap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    background: rgba(255,111,0,0.1);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+  }
+
+  .phs-gap-icon { flex-shrink: 0; font-size: 16px; }
+
+  .phs-result-cta {
+    text-align: center;
+  }
+
+  .phs-result-cta .btn {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .phs-restart {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.15s;
+  }
+
+  .phs-restart:hover { color: rgba(255,255,255,0.8); }
+
   /* ─── CTA SECTION ─── */
   .cta-section {
     padding: 96px 0;
@@ -1821,6 +2076,93 @@
   </div>
 </section>
 
+<!-- PRESENCE HEALTH SCORE WIDGET -->
+<section class="phs-section" id="presence-score" aria-labelledby="phs-heading">
+  <div class="container">
+    <div class="phs-inner">
+      <span class="section-label">Free 30-Second Check</span>
+      <h2 id="phs-heading">What's your Presence Health Score?</h2>
+      <p class="phs-intro">Answer 5 quick yes/no questions and see exactly how visible — or invisible — your business is to local customers right now.</p>
+
+      <div class="phs-card">
+        <!-- Progress bar -->
+        <div class="phs-progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="phs-progress-aria">
+          <div class="phs-progress-bar" id="phs-progress"></div>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="phs-question active" id="phs-q1">
+          <p class="phs-q-num">Question 1 of 5</p>
+          <p class="phs-q-text">Is your Google Business Profile claimed and verified?</p>
+          <div class="phs-btn-row">
+            <button class="phs-btn yes" onclick="phsAnswer(1, true)">✓ Yes</button>
+            <button class="phs-btn no" onclick="phsAnswer(1, false)">✗ No / Not sure</button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="phs-question" id="phs-q2">
+          <p class="phs-q-num">Question 2 of 5</p>
+          <p class="phs-q-text">Do your business hours show correctly on Google Maps?</p>
+          <div class="phs-btn-row">
+            <button class="phs-btn yes" onclick="phsAnswer(2, true)">✓ Yes</button>
+            <button class="phs-btn no" onclick="phsAnswer(2, false)">✗ No / Not sure</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="phs-question" id="phs-q3">
+          <p class="phs-q-num">Question 3 of 5</p>
+          <p class="phs-q-text">Is your business listed and consistent on Yelp and Apple Maps?</p>
+          <div class="phs-btn-row">
+            <button class="phs-btn yes" onclick="phsAnswer(3, true)">✓ Yes</button>
+            <button class="phs-btn no" onclick="phsAnswer(3, false)">✗ No / Not sure</button>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="phs-question" id="phs-q4">
+          <p class="phs-q-num">Question 4 of 5</p>
+          <p class="phs-q-text">Does your website load and display properly on mobile devices?</p>
+          <div class="phs-btn-row">
+            <button class="phs-btn yes" onclick="phsAnswer(4, true)">✓ Yes</button>
+            <button class="phs-btn no" onclick="phsAnswer(4, false)">✗ No / Not sure</button>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="phs-question" id="phs-q5">
+          <p class="phs-q-num">Question 5 of 5</p>
+          <p class="phs-q-text">Do you have at least 10 recent Google reviews (within the last 6 months)?</p>
+          <div class="phs-btn-row">
+            <button class="phs-btn yes" onclick="phsAnswer(5, true)">✓ Yes</button>
+            <button class="phs-btn no" onclick="phsAnswer(5, false)">✗ No / Not sure</button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="phs-result" id="phs-result" aria-live="polite">
+          <div class="phs-score-ring">
+            <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+              <circle class="ring-bg" cx="55" cy="55" r="45"/>
+              <circle class="ring-fill" id="phs-ring" cx="55" cy="55" r="45"/>
+            </svg>
+            <div class="phs-score-num" id="phs-score-num">0/5</div>
+          </div>
+          <h3 class="phs-result-headline" id="phs-result-headline"></h3>
+          <p class="phs-result-sub" id="phs-result-sub"></p>
+          <ul class="phs-gaps-list" id="phs-gaps-list"></ul>
+          <div class="phs-result-cta">
+            <a href="#book-call" class="btn btn-primary" style="width:100%;display:block;box-sizing:border-box;" id="phs-cta-btn">Get My Free Presence Fix Plan →</a>
+            <p style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:10px;">Free · No obligation · Takes under 30 min</p>
+          </div>
+          <button class="phs-restart" onclick="phsRestart()">← Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA / BOOK A CALL -->
 <section class="cta-section" id="book-call" aria-labelledby="cta-heading">
   <div class="container">
@@ -2004,6 +2346,159 @@ document.querySelectorAll('form').forEach(function(form) {
 </script>
 
 <script>document.querySelectorAll('.year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+
+<script>
+// ─── PRESENCE HEALTH SCORE WIDGET ───
+(function() {
+  var answers = {};
+  var current = 1;
+  var total = 5;
+
+  var questions = [
+    {
+      q: 'Google Business Profile claimed & verified',
+      gap: '⚠️ Your Google Business Profile may be unclaimed — competitors can suggest edits and customers may see wrong info.'
+    },
+    {
+      q: 'Business hours correct on Google Maps',
+      gap: '⚠️ Incorrect hours on Google Maps drive customers away before they even try to visit or call.'
+    },
+    {
+      q: 'Listed consistently on Yelp & Apple Maps',
+      gap: '⚠️ Missing or inconsistent listings on Yelp and Apple Maps means a large share of searchers can\'t find you.'
+    },
+    {
+      q: 'Website works properly on mobile',
+      gap: '⚠️ A broken mobile experience causes most visitors to leave immediately — and hurts your Google ranking.'
+    },
+    {
+      q: '10+ recent Google reviews (last 6 months)',
+      gap: '⚠️ Low or stale review counts signal low trust to both Google and potential customers searching near you.'
+    }
+  ];
+
+  window.phsAnswer = function(qNum, isYes) {
+    answers[qNum] = isYes;
+    var nextQ = qNum + 1;
+
+    // Update progress bar
+    var pct = Math.round((qNum / total) * 100);
+    var bar = document.getElementById('phs-progress');
+    var aria = document.getElementById('phs-progress-aria');
+    if (bar) bar.style.width = pct + '%';
+    if (aria) aria.setAttribute('aria-valuenow', pct);
+
+    if (nextQ <= total) {
+      // Show next question
+      document.getElementById('phs-q' + qNum).classList.remove('active');
+      var next = document.getElementById('phs-q' + nextQ);
+      if (next) next.classList.add('active');
+      current = nextQ;
+    } else {
+      // All answered — show result
+      document.getElementById('phs-q' + qNum).classList.remove('active');
+      if (bar) bar.style.width = '100%';
+      if (aria) aria.setAttribute('aria-valuenow', 100);
+      showResult();
+    }
+  };
+
+  function showResult() {
+    var score = 0;
+    var gaps = [];
+    for (var i = 1; i <= total; i++) {
+      if (answers[i] === true) {
+        score++;
+      } else {
+        gaps.push(questions[i - 1].gap);
+      }
+    }
+
+    // Fill ring (circumference = 2*PI*45 ≈ 283)
+    var dashOffset = Math.round(283 - (score / total) * 283);
+    var ring = document.getElementById('phs-ring');
+    if (ring) {
+      // Color by score
+      if (score <= 1) ring.style.stroke = '#FF6F00';
+      else if (score <= 3) ring.style.stroke = '#FFB74D';
+      else ring.style.stroke = '#69F0AE';
+      setTimeout(function() {
+        ring.style.strokeDashoffset = dashOffset;
+      }, 80);
+    }
+
+    var numEl = document.getElementById('phs-score-num');
+    if (numEl) numEl.textContent = score + '/5';
+
+    // Headline & sub copy
+    var headline = '';
+    var sub = '';
+    var ctaText = 'Get My Free Presence Fix Plan →';
+
+    if (score === 5) {
+      headline = 'Great foundations — but there\'s always more to win 🏆';
+      sub = 'You\'ve got the basics covered. But ranking #1 in the local map pack and staying there takes ongoing optimization — reviews, posts, directory freshness, and more. Let\'s see what\'s still being left on the table.';
+      ctaText = 'Book a Free Presence Review →';
+    } else if (score >= 3) {
+      headline = 'You\'re partially visible — but leaking customers 📉';
+      sub = 'You\'ve got some pieces in place, but the gaps below are actively costing you calls and visits. Here\'s what\'s missing:';
+    } else if (score >= 1) {
+      headline = 'Your presence is at risk — customers can\'t find you 🚨';
+      sub = 'Multiple critical gaps mean local customers are finding your competitors instead of you. Here\'s exactly what needs fixing:';
+    } else {
+      headline = 'Your digital presence is nearly invisible 🔴';
+      sub = 'With none of these foundations in place, your business is essentially invisible to local searchers. The good news: every one of these is fixable. Here\'s where to start:';
+    }
+
+    var headlineEl = document.getElementById('phs-result-headline');
+    var subEl = document.getElementById('phs-result-sub');
+    var ctaBtn = document.getElementById('phs-cta-btn');
+    if (headlineEl) headlineEl.textContent = headline;
+    if (subEl) subEl.textContent = sub;
+    if (ctaBtn) ctaBtn.textContent = ctaText;
+
+    // Render gap list
+    var gapsList = document.getElementById('phs-gaps-list');
+    if (gapsList) {
+      gapsList.innerHTML = '';
+      if (gaps.length === 0) {
+        gapsList.style.display = 'none';
+      } else {
+        gapsList.style.display = '';
+        gaps.forEach(function(g) {
+          var li = document.createElement('li');
+          li.className = 'phs-gap-item';
+          li.innerHTML = '<span class="phs-gap-icon" aria-hidden="true">⚠️</span><span>' + g.replace(/^⚠️ /, '') + '</span>';
+          gapsList.appendChild(li);
+        });
+      }
+    }
+
+    document.getElementById('phs-result').classList.add('active');
+  }
+
+  window.phsRestart = function() {
+    answers = {};
+    current = 1;
+    // Reset progress
+    var bar = document.getElementById('phs-progress');
+    var aria = document.getElementById('phs-progress-aria');
+    if (bar) bar.style.width = '0%';
+    if (aria) aria.setAttribute('aria-valuenow', 0);
+    // Hide result
+    document.getElementById('phs-result').classList.remove('active');
+    // Reset ring
+    var ring = document.getElementById('phs-ring');
+    if (ring) ring.style.strokeDashoffset = 283;
+    // Show first question
+    for (var i = 1; i <= total; i++) {
+      var q = document.getElementById('phs-q' + i);
+      if (q) q.classList.remove('active');
+    }
+    document.getElementById('phs-q1').classList.add('active');
+  };
+})();
+</script>
 
 </body>
 </html>
